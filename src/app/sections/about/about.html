@@ -1,0 +1,24 @@
+<section id="nosotros" class="section" aria-labelledby="titulo-nosotros">
+  <div class="about container">
+    <app-section-heading
+      tag="nosotros"
+      title="Trato directo"
+      headingId="titulo-nosotros"
+      lead="Cuando hablás con Marotto, hablás con quienes escriben el código."
+    />
+
+    <ul class="about__grid">
+      @for (member of team; track member.name) {
+        <li class="about__card card" appReveal>
+          <div class="about__photo mono" role="img" [attr.aria-label]="'Espacio reservado para la foto de ' + member.name">
+            [FOTO]
+          </div>
+          <div class="about__info">
+            <h3 class="about__name">{{ member.name }}</h3>
+            <p class="about__role mono">{{ member.role }}</p>
+          </div>
+        </li>
+      }
+    </ul>
+  </div>
+</section>

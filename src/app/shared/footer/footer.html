@@ -1,0 +1,15 @@
+<footer class="footer">
+  <div class="footer__inner container">
+    <app-logo label="Marotto Software, volver al inicio" [size]="22" />
+
+    <ul class="footer__socials mono" aria-label="Redes">
+      @for (social of socials; track social.label) {
+        <li>
+          <a class="footer__link" [href]="'#' + social.fragment">{{ social.label }}</a>
+        </li>
+      }
+    </ul>
+
+    <p class="footer__legal">© 2026 Marotto Software · San José, Uruguay</p>
+  </div>
+</footer>

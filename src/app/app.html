@@ -1,0 +1,27 @@
+<!-- Degradé compartido por los íconos de línea (stroke="url(#icon-gradient)") -->
+<svg class="visually-hidden" width="0" height="0" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="icon-gradient" gradientUnits="userSpaceOnUse" x1="2" y1="2" x2="22" y2="22">
+      <stop offset="0" stop-color="#7d8bff" />
+      <stop offset="1" stop-color="#e865c8" />
+    </linearGradient>
+  </defs>
+</svg>
+
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+<app-header />
+
+<main id="contenido">
+  <app-hero />
+  <app-services />
+  <app-technologies />
+  <app-process />
+  @if (showProjects) {
+    <app-projects />
+  }
+  <app-about />
+  <app-contact />
+</main>
+
+<app-footer />

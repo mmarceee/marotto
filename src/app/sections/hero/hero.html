@@ -1,0 +1,26 @@
+<section id="inicio" class="hero" aria-labelledby="titulo-hero">
+  <div class="hero__glow" aria-hidden="true"></div>
+
+  <div class="hero__grid container">
+    <div class="hero__copy">
+      <p class="hero__eyebrow mono">&gt; san-josé, uruguay</p>
+      <h1 id="titulo-hero" class="hero__title">
+        El software que tu negocio necesita, hecho <span class="grad-text hero__nowrap">a medida.</span>
+      </h1>
+      <p class="hero__lead">
+        Somos Ezequiel y Lucas. Diseñamos y desarrollamos sitios, aplicaciones y sistemas de gestión, con
+        la seguridad en cuenta desde la primera línea.
+      </p>
+      <div class="hero__actions">
+        <a class="btn btn--primary" href="#contacto">Contactanos</a>
+        @if (showProjects) {
+          <a class="btn btn--ghost" href="#proyectos">Ver proyectos</a>
+        } @else {
+          <a class="btn btn--ghost" href="#servicios">Ver servicios</a>
+        }
+      </div>
+    </div>
+
+    <app-terminal />
+  </div>
+</section>

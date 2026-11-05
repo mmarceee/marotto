@@ -1,0 +1,15 @@
+<section id="proceso" class="section" aria-labelledby="titulo-proceso">
+  <div class="process container">
+    <app-section-heading tag="proceso" title="Cómo trabajamos" headingId="titulo-proceso" />
+
+    <ol class="process__steps">
+      @for (step of steps; track step.number) {
+        <li class="process__step" appReveal>
+          <p class="process__number mono">{{ step.number }} <span class="process__slashes">//</span></p>
+          <h3 class="process__title">{{ step.title }}</h3>
+          <p class="process__text">{{ step.description }}</p>
+        </li>
+      }
+    </ol>
+  </div>
+</section>

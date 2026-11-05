@@ -1,0 +1,21 @@
+<section id="tecnologias" class="section" aria-labelledby="titulo-tecnologias">
+  <div class="tech container">
+    <app-section-heading tag="tecnologias" title="Con qué trabajamos" headingId="titulo-tecnologias" />
+
+    <div class="tech__body">
+      <ul class="tech__grid">
+        @for (tech of technologies; track tech.name) {
+          <li class="tech__item card" appReveal>
+            <span class="tech__area mono">{{ tech.area }}</span>
+            <span class="tech__name">{{ tech.name }}</span>
+          </li>
+        }
+      </ul>
+
+      <p class="tech__note" appReveal>
+        <span class="tech__slashes mono" aria-hidden="true">// </span>También sumamos las herramientas y los
+        servicios necesarios para integrar, desplegar y mantener cada aplicación en funcionamiento.
+      </p>
+    </div>
+  </div>
+</section>

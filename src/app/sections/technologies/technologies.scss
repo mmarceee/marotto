@@ -1,0 +1,54 @@
+@use 'styles/breakpoints' as bp;
+
+.tech {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(36px, 4vw, 56px);
+}
+
+.tech__body {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+// 2 columnas en teléfono, 4 desde tablet: con 8 tecnologías nunca queda una suelta
+.tech__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+
+  @include bp.up(bp.$md) {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.tech__item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 20px;
+}
+
+.tech__area {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+
+.tech__name {
+  font-size: 1.0625rem;
+  line-height: 1.3;
+  font-weight: 500;
+}
+
+.tech__note {
+  max-width: 44em;
+  font-size: 1.0625rem;
+  color: var(--color-text-soft);
+  text-wrap: pretty;
+}
+
+.tech__slashes {
+  font-weight: 500;
+  color: var(--color-warm-end);
+}

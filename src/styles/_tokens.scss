@@ -1,0 +1,45 @@
+// Tokens de diseño de Marotto Software. Todo color, tipografía y medida sale de acá.
+:root {
+  // Superficies y bordes
+  --color-bg: #16161a;
+  --color-surface: #101014;
+  --color-surface-raised: #1e1e24;
+  --color-divider: #232329;
+  --color-border: #2c2c34;
+  --color-border-strong: #3a3a44;
+  --color-border-hover: #4a4a58;
+
+  // Texto (todos pasan 4.5:1 sobre --color-bg)
+  --color-text: #ffffff;
+  --color-text-soft: #c4c4ce;
+  --color-text-muted: #b4b4be;
+  --color-text-faint: #a0a0ab;
+  --color-text-chip: #d8d8e0;
+
+  // Acentos. #5B6CFF no llega a 4.5:1 en texto chico: para eso va --color-accent-soft.
+  --color-accent-start: #5b6cff;
+  --color-accent-end: #e865c8;
+  --color-accent-soft: #a9b2ff;
+  --color-warm-start: #ff4438;
+  --color-warm-end: #ff8a50;
+  --color-on-accent: #0e0e12;
+
+  --grad-primary: linear-gradient(90deg, var(--color-accent-start), var(--color-accent-end));
+  --grad-warm: linear-gradient(90deg, var(--color-warm-start), var(--color-warm-end));
+
+  // Tipografía
+  --font-sans: 'Lexend', 'Avenir Next', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, Consolas, monospace;
+  --text-h1: clamp(2.5rem, 5.2vw, 4.5rem);
+  --text-h2: clamp(1.875rem, 3.4vw, 2.75rem);
+  --text-lead: clamp(1.0625rem, 1.4vw, 1.1875rem);
+
+  // Espaciado y forma
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --container: 1200px;
+  --gutter: clamp(20px, 5vw, 40px);
+  --section-pad: clamp(72px, 9vw, 120px);
+  --header-h: 72px;
+  --tap: 44px;
+}

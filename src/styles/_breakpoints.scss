@@ -1,0 +1,11 @@
+// Mobile first: los estilos base son para teléfono y estos mixins suman desde cada ancho.
+$md: 768px;
+$nav: 860px;
+$lg: 1024px;
+$xl: 1100px;
+
+@mixin up($min) {
+  @media (min-width: $min) {
+    @content;
+  }
+}

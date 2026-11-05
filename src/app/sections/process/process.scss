@@ -1,0 +1,50 @@
+@use 'styles/breakpoints' as bp;
+
+.process {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(36px, 4vw, 56px);
+}
+
+.process__steps {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 40px 32px;
+
+  @include bp.up(bp.$md) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @include bp.up(bp.$xl) {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.process__step {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-top: 20px;
+  border-top: 1px solid var(--color-border-strong);
+}
+
+.process__number {
+  font-size: 0.9375rem;
+  font-weight: 500;
+}
+
+.process__slashes {
+  color: var(--color-warm-end);
+}
+
+.process__title {
+  font-size: 1.375rem;
+  line-height: 1.3;
+  font-weight: 500;
+}
+
+.process__text {
+  font-size: 0.9375rem;
+  color: var(--color-text-muted);
+  text-wrap: pretty;
+}

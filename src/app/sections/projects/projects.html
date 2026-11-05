@@ -1,0 +1,24 @@
+<section id="proyectos" class="section" aria-labelledby="titulo-proyectos">
+  <div class="projects container">
+    <app-section-heading tag="proyectos" title="Lo que construimos" headingId="titulo-proyectos" />
+
+    <ul class="projects__grid">
+      @for (project of projects; track $index) {
+        <li class="projects__card card" appReveal>
+          <div class="projects__image placeholder mono" role="img" aria-label="Espacio reservado para la captura del proyecto">
+            [CAPTURA DEL PROYECTO]
+          </div>
+          <div class="projects__body">
+            <h3 class="projects__title">{{ project.name }}</h3>
+            <p class="projects__text">{{ project.description }}</p>
+            <ul class="projects__chips" aria-label="Tecnologías">
+              @for (tech of project.technologies; track $index) {
+                <li class="chip">{{ tech }}</li>
+              }
+            </ul>
+          </div>
+        </li>
+      }
+    </ul>
+  </div>
+</section>

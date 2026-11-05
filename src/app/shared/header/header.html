@@ -1,0 +1,37 @@
+<header class="header">
+  <div class="header__bar container">
+    <app-logo [blink]="true" />
+
+    <nav class="header__nav" aria-label="Principal">
+      @for (link of links; track link.fragment) {
+        <a class="header__link" [href]="'#' + link.fragment">{{ link.label }}</a>
+      }
+    </nav>
+
+    <a class="btn btn--primary btn--sm header__cta" href="#contacto">Contactanos</a>
+
+    <button
+      type="button"
+      class="header__toggle"
+      aria-controls="menu-mobile"
+      [attr.aria-expanded]="open()"
+      [attr.aria-label]="open() ? 'Cerrar menú' : 'Abrir menú'"
+      (click)="toggle()"
+    >
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
+        @if (open()) {
+          <path d="M6 6l12 12M18 6L6 18" />
+        } @else {
+          <path d="M4 7h16M4 12h16M4 17h16" />
+        }
+      </svg>
+    </button>
+  </div>
+
+  <nav id="menu-mobile" class="header__mobile" [class.is-open]="open()" aria-label="Principal mobile">
+    @for (link of links; track link.fragment) {
+      <a class="header__mobile-link" [href]="'#' + link.fragment" (click)="close()">{{ link.label }}</a>
+    }
+    <a class="btn btn--primary header__mobile-cta" href="#contacto" (click)="close()">Contactanos</a>
+  </nav>
+</header>

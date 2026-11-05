@@ -1,0 +1,76 @@
+.terminal {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  font-family: var(--font-mono);
+}
+
+.terminal__bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  border-bottom: 1px solid #26262d;
+}
+
+.terminal__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--color-border);
+
+  &--warm {
+    background: var(--grad-warm);
+  }
+}
+
+.terminal__title {
+  margin-left: 8px;
+  font-size: 0.75rem;
+  color: var(--color-text-faint);
+}
+
+.terminal__body {
+  padding: 20px;
+  overflow: hidden;
+  font-size: clamp(0.75rem, 3.2vw, 0.875rem);
+  line-height: 1.75;
+  white-space: pre;
+}
+
+.terminal__line {
+  min-height: 1.75em;
+}
+
+.terminal__cursor {
+  display: inline-block;
+  width: 0.6em;
+  height: 1.1em;
+  margin-left: 1px;
+  vertical-align: -0.15em;
+  background: var(--grad-primary);
+}
+
+.t-prompt {
+  color: var(--color-accent-end);
+}
+.t-cmd {
+  color: var(--color-text);
+}
+.t-out {
+  color: var(--color-text-faint);
+}
+.t-ok {
+  color: var(--color-warm-end);
+}
+.t-kw {
+  color: var(--color-accent-soft);
+}
+.t-str {
+  color: #f3a6e0;
+}
+.t-txt {
+  color: var(--color-text-chip);
+}

@@ -1,0 +1,20 @@
+<div class="terminal" aria-hidden="true">
+  <div class="terminal__bar">
+    <span class="terminal__dot terminal__dot--warm"></span>
+    <span class="terminal__dot"></span>
+    <span class="terminal__dot"></span>
+    <span class="terminal__title">~/tu-proyecto</span>
+  </div>
+  <div class="terminal__body">
+    @for (line of lines(); track $index) {
+      <div class="terminal__line">
+        @for (segment of line.segments; track $index) {
+          <span [class]="'t-' + segment.tone">{{ segment.text }}</span>
+        }
+        @if (line.active) {
+          <span class="terminal__cursor blink"></span>
+        }
+      </div>
+    }
+  </div>
+</div>
