@@ -10,9 +10,7 @@
     <ul class="about__grid">
       @for (member of team; track member.name) {
         <li class="about__card card" appReveal>
-          <div class="about__photo mono" role="img" [attr.aria-label]="'Espacio reservado para la foto de ' + member.name">
-            [FOTO]
-          </div>
+          <img class="about__photo" [src]="member.photo" alt="" width="112" height="112" loading="lazy" />
           <div class="about__info">
             <h3 class="about__name">{{ member.name }}</h3>
             <p class="about__role mono">{{ member.role }}</p>

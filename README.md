@@ -12,6 +12,14 @@ npm run build      # build de producción en dist/marotto
 npm test           # tests unitarios con Vitest
 ```
 
+## Envío del formulario
+
+1. Copiá `.env.example` como `.env` y configurá `SMTP_USER` y `SMTP_PASSWORD`. Para usar Gmail, activá la verificación en dos pasos y generá una [contraseña de aplicación de Google](https://support.google.com/accounts/answer/185833).
+2. Ejecutá `npm run start:server` en una terminal y `npm start` en otra. Abrí http://localhost:4200.
+3. El servidor envía los mensajes a `marotto.software@gmail.com`. Al responder al correo, se usa la dirección que dejó la persona.
+
+Para producción, ejecutá `npm run build` y usá `npm run start:server` como comando de inicio en un hosting con Node.js. Ese proceso sirve el sitio y el formulario. Cargá las credenciales como variables privadas del hosting. Configurá `HOST=0.0.0.0` si el hosting necesita que Node escuche en todas las interfaces. Si hay un proxy inverso, configurá `TRUST_PROXY` con sus IP o rangos CIDR para que el límite de envíos se aplique por visitante. Para otro proveedor SMTP, configurá también `SMTP_HOST` y `SMTP_PORT`.
+
 ## Dónde se edita cada cosa
 
 | Qué                                              | Dónde                                 |
@@ -43,7 +51,7 @@ src/app/
    ├─ process/
    ├─ projects/             oculta mientras SHOW_PROJECTS sea false
    ├─ about/
-   └─ contact/              Reactive Forms; por ahora el envío solo muestra un mensaje
+   └─ contact/              Reactive Forms y envío al servidor de correo
 ```
 
 ## Accesibilidad

@@ -115,16 +115,20 @@ export const PROJECTS: Project[] = [1, 2, 3].map((n) => ({
 export interface TeamMember {
   name: string;
   role: string;
+  photo: string;
 }
 
 export const TEAM: TeamMember[] = [
-  { name: 'Ezequiel', role: 'CEO · Full Stack · Cybersecurity Specialist' },
-  { name: 'Lucas', role: 'CEO · Full Stack' },
+  { name: 'Ezequiel Marcenal', role: 'CEO · Full Stack · Cybersecurity Specialist', photo: 'quienes_somos/mar.jpg' },
+  { name: 'Lucas Ottonello', role: 'CEO · Full Stack', photo: 'quienes_somos/otto.png' },
 ];
 
 export const CONTACT = {
-  whatsapp: { display: '+598 99 654 896', href: 'https://wa.me/59899654896' },
-  email: { display: 'marotto.sw@gmail.com', href: 'mailto:marotto.sw@gmail.com' },
+  whatsapp: [
+    { display: '+598 99 654 896', href: 'https://wa.me/59899654896' },
+    { display: '+598 91 076 119', href: 'https://wa.me/59891076119' },
+  ],
+  email: { display: 'marotto.software@gmail.com', href: 'mailto:marotto.software@gmail.com' },
 };
 
 export const SOCIAL_LINKS: NavLink[] = [

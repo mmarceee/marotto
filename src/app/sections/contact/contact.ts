@@ -6,7 +6,7 @@ import { Reveal } from '../../shared/reveal.directive';
 type ContactField = 'nombre' | 'email' | 'mensaje';
 
 const FIELDS: ContactField[] = ['nombre', 'email', 'mensaje'];
-const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const EMAIL_PATTERN = /^[^\s@<>,;:()\[\]"\\]+@[^\s@<>,;:()\[\]"\\]+\.[^\s@<>,;:()\[\]"\\]+$/;
 
 /** Como minLength, pero sin contar espacios al principio y al final. */
 function minTrimmedLength(min: number): ValidatorFn {
@@ -30,6 +30,8 @@ export class Contact {
     mensaje: ['', [minTrimmedLength(10)]],
   });
   protected readonly submitted = signal(false);
+  protected readonly sending = signal(false);
+  protected readonly sendError = signal('');
   /** Nombre de quien envió el último mensaje; null mientras se muestra el formulario. */
   protected readonly sentBy = signal<string | null>(null);
 
@@ -38,7 +40,10 @@ export class Contact {
     return control.invalid && (control.touched || this.submitted());
   }
 
-  protected submit(): void {
+  protected async submit(): Promise<void> {
+    if (this.sending()) return;
+
+    this.sendError.set('');
     this.submitted.set(true);
     if (this.form.invalid) {
       this.form.markAllAsTouched();
@@ -47,10 +52,29 @@ export class Contact {
       return;
     }
 
-    // Por ahora no se envía a ningún servicio: solo se confirma en pantalla.
-    this.sentBy.set(this.form.getRawValue().nombre.trim());
-    this.form.reset();
-    this.submitted.set(false);
+    const { nombre, email, mensaje } = this.form.getRawValue();
+    this.sending.set(true);
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ nombre: nombre.trim(), email: email.trim(), mensaje: mensaje.trim() }),
+      });
+      if (response.status !== 204) {
+        this.sendError.set(response.status === 429
+          ? 'Hubo demasiados intentos. Esperá unos minutos y volvé a probar.'
+          : 'No pudimos enviar tu mensaje. Volvé a intentar o escribinos por WhatsApp.');
+        return;
+      }
+
+      this.sentBy.set(nombre.trim());
+      this.form.reset();
+      this.submitted.set(false);
+    } catch {
+      this.sendError.set('No pudimos enviar tu mensaje. Volvé a intentar o escribinos por WhatsApp.');
+    } finally {
+      this.sending.set(false);
+    }
   }
 
   protected sendAnother(): void {
