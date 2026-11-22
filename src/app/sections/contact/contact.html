@@ -4,8 +4,10 @@
       <p class="contact__tag mono">&lt;contacto/&gt;</p>
       <h2 id="titulo-contacto" class="contact__title">Contanos qué necesitás</h2>
       <p class="contact__lead">
-        Una idea suelta alcanza para arrancar. Escribinos por acá o por donde te quede más cómodo.
+        Una idea suelta alcanza para arrancar. Contanos qué proceso querés mejorar o qué proyecto
+        necesitás poner en marcha. Te ayudamos a definir por dónde empezar.
       </p>
+      <p class="contact__lead">Escribinos por acá o por donde te quede más cómodo.</p>
 
       <ul class="contact__channels">
         @for (whatsapp of contact.whatsapp; track whatsapp.href) {
@@ -80,6 +82,19 @@
             @if (showError('email')) {
               <p id="error-email" class="field__error">Ese email no parece válido.</p>
             }
+          </div>
+
+          <div class="field">
+            <label class="field__label" for="campo-telefono">Teléfono (opcional)</label>
+            <input
+              id="campo-telefono"
+              class="field__input"
+              type="tel"
+              autocomplete="tel"
+              formControlName="telefono"
+              maxlength="40"
+              [readOnly]="sending()"
+            />
           </div>
 
           <div class="field">

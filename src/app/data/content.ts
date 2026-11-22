@@ -53,18 +53,18 @@ export const SERVICES: Service[] = [
 
 export interface Technology {
   name: string;
-  area: string;
+  logo: string;
 }
 
 export const TECHNOLOGIES: Technology[] = [
-  { name: '.NET', area: 'backend' },
-  { name: 'Java', area: 'backend' },
-  { name: 'PHP', area: 'backend' },
-  { name: 'Laravel', area: 'backend' },
-  { name: 'Angular', area: 'frontend' },
-  { name: 'SQL Server', area: 'base de datos' },
-  { name: 'PostgreSQL', area: 'base de datos' },
-  { name: 'MySQL', area: 'base de datos' },
+  { name: '.NET', logo: 'tecnologias/dotnet.svg' },
+  { name: 'Java', logo: 'tecnologias/java.svg' },
+  { name: 'PHP', logo: 'tecnologias/php.svg' },
+  { name: 'Laravel', logo: 'tecnologias/laravel.svg' },
+  { name: 'Angular', logo: 'tecnologias/angular.svg' },
+  { name: 'SQL Server', logo: 'tecnologias/sql-server.svg' },
+  { name: 'PostgreSQL', logo: 'tecnologias/postgresql.svg' },
+  { name: 'MySQL', logo: 'tecnologias/mysql.svg' },
 ];
 
 export interface ProcessStep {
@@ -115,12 +115,29 @@ export const PROJECTS: Project[] = [1, 2, 3].map((n) => ({
 export interface TeamMember {
   name: string;
   role: string;
+  specialty: string;
+  education: string;
   photo: string;
+  linkedin: string;
 }
 
 export const TEAM: TeamMember[] = [
-  { name: 'Ezequiel Marcenal', role: 'CEO · Full Stack · Cybersecurity Specialist', photo: 'quienes_somos/mar.jpg' },
-  { name: 'Lucas Ottonello', role: 'CEO · Full Stack', photo: 'quienes_somos/otto.png' },
+  {
+    name: 'Ezequiel Marcenal',
+    role: 'CEO & Co-founder',
+    specialty: 'Full Stack · Cybersecurity Specialist',
+    education: 'Tecnólogo en Informática - UTEC',
+    photo: 'quienes_somos/mar.jpg',
+    linkedin: 'https://www.linkedin.com/in/ezequiel-marcenal/',
+  },
+  {
+    name: 'Lucas Ottonello',
+    role: 'CEO & Co-founder',
+    specialty: 'Full Stack',
+    education: 'Tecnólogo en Informática - UTEC',
+    photo: 'quienes_somos/otto.png',
+    linkedin: 'https://www.linkedin.com/in/lucas-ottonello-dolio/',
+  },
 ];
 
 export const CONTACT = {
@@ -130,9 +147,3 @@ export const CONTACT = {
   ],
   email: { display: 'marotto.software@gmail.com', href: 'mailto:marotto.software@gmail.com' },
 };
-
-export const SOCIAL_LINKS: NavLink[] = [
-  { label: '[LINKEDIN]', fragment: 'inicio' },
-  { label: '[GITHUB]', fragment: 'inicio' },
-  { label: '[INSTAGRAM]', fragment: 'inicio' },
-];

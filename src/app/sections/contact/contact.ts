@@ -27,6 +27,7 @@ export class Contact {
   protected readonly form = this.fb.group({
     nombre: ['', [minTrimmedLength(2)]],
     email: ['', [Validators.required, Validators.pattern(EMAIL_PATTERN)]],
+    telefono: [''],
     mensaje: ['', [minTrimmedLength(10)]],
   });
   protected readonly submitted = signal(false);
@@ -52,13 +53,18 @@ export class Contact {
       return;
     }
 
-    const { nombre, email, mensaje } = this.form.getRawValue();
+    const { nombre, email, telefono, mensaje } = this.form.getRawValue();
     this.sending.set(true);
     try {
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ nombre: nombre.trim(), email: email.trim(), mensaje: mensaje.trim() }),
+        body: JSON.stringify({
+          nombre: nombre.trim(),
+          email: email.trim(),
+          telefono: telefono.trim() || undefined,
+          mensaje: mensaje.trim(),
+        }),
       });
       if (response.status !== 204) {
         this.sendError.set(response.status === 429

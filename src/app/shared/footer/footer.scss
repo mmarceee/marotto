@@ -11,24 +11,10 @@
   gap: 24px 40px;
 }
 
-.footer__socials {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4px 24px;
-  font-size: 0.8125rem;
-}
-
-.footer__link {
-  display: inline-flex;
-  align-items: center;
-  min-height: var(--tap);
-  color: var(--color-text-muted);
-  text-decoration: none;
-  transition: color 0.15s ease;
-
-  &:hover {
-    color: var(--color-text);
-  }
+.footer__description {
+  max-width: 40ch;
+  color: var(--color-text-soft);
+  text-wrap: pretty;
 }
 
 .footer__legal {

@@ -6,6 +6,22 @@
   gap: clamp(36px, 4vw, 56px);
 }
 
+.about__intro,
+.about__story {
+  display: grid;
+  gap: 16px;
+}
+
+.about__story {
+  max-width: 68ch;
+  color: var(--color-text-soft);
+  text-wrap: pretty;
+}
+
+.about__story strong {
+  color: var(--color-text);
+}
+
 .about__grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(420px, 100%), 1fr));
@@ -55,4 +71,28 @@
 .about__role {
   font-size: 0.875rem;
   color: var(--color-accent-soft);
+}
+
+.about__detail {
+  font-size: 0.9375rem;
+  line-height: 1.4;
+  color: var(--color-text-soft);
+}
+
+.about__linkedin {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  min-height: var(--tap);
+  padding-inline: 12px;
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-sm);
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+
+  &:hover {
+    border-color: var(--color-accent-soft);
+    color: var(--color-accent-soft);
+  }
 }

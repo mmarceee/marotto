@@ -41,12 +41,16 @@ describe('Contact', () => {
     expect(el.querySelector('#error-nombre')).toBeNull();
   });
 
-  it('sends the form and confirms after the server accepts it', async () => {
+  it.each([
+    { value: '', expected: {}, label: 'without a phone number' },
+    { value: '  +598 99 123 456  ', expected: { telefono: '+598 99 123 456' }, label: 'with a phone number' },
+  ])('sends the form $label and confirms after the server accepts it', async ({ value, expected }) => {
     const send = vi.fn().mockResolvedValue(new Response(null, { status: 204 }));
     vi.stubGlobal('fetch', send);
     const { fixture, el } = await render();
     type(el, 'campo-nombre', '  Ana ');
     type(el, 'campo-email', 'ana@correo.com');
+    type(el, 'campo-telefono', value);
     type(el, 'campo-mensaje', 'Necesito un sistema de turnos.');
     el.querySelector<HTMLButtonElement>('button[type="submit"]')!.click();
     await fixture.whenStable();
@@ -58,6 +62,7 @@ describe('Contact', () => {
     expect(JSON.parse(request.body)).toEqual({
       nombre: 'Ana',
       email: 'ana@correo.com',
+      ...expected,
       mensaje: 'Necesito un sistema de turnos.',
     });
     expect(el.querySelector('[role="status"]')?.textContent).toContain('Gracias, Ana.');

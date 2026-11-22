@@ -6,7 +6,7 @@
       <ul class="tech__grid">
         @for (tech of technologies; track tech.name) {
           <li class="tech__item card" appReveal>
-            <span class="tech__area mono">{{ tech.area }}</span>
+            <img class="tech__logo" [src]="tech.logo" alt="" width="50" height="50" loading="lazy" />
             <span class="tech__name">{{ tech.name }}</span>
           </li>
         }

@@ -1,11 +1,27 @@
 <section id="nosotros" class="section" aria-labelledby="titulo-nosotros">
   <div class="about container">
-    <app-section-heading
-      tag="nosotros"
-      title="Trato directo"
-      headingId="titulo-nosotros"
-      lead="Cuando hablás con Marotto, hablás con quienes escriben el código."
-    />
+    <div class="about__intro">
+      <app-section-heading
+        tag="nosotros"
+        title="Trato directo"
+        headingId="titulo-nosotros"
+        lead="Cuando hablás con Marotto, hablás con quienes escriben el código."
+      />
+
+      <div class="about__story" appReveal>
+        <p>
+          Desde la primera charla, hablás directamente con nosotros. Escuchamos qué necesitás,
+          definimos con vos cómo resolverlo y somos nosotros quienes escribimos el código.
+        </p>
+        <p>
+          Somos Ezequiel Marcenal y Lucas Ottonello, dos desarrolladores uruguayos egresados de la
+          carrera de Tecnólogo en Informática de UTEC. Los dos trabajamos en desarrollo full stack y
+          sumamos la especialización de Ezequiel en ciberseguridad. Para darle nombre a lo que hacemos
+          juntos, unimos nuestros apellidos, <strong>Mar</strong>cenal y <strong>Otto</strong>nello.
+          Así nació Marotto.
+        </p>
+      </div>
+    </div>
 
     <ul class="about__grid">
       @for (member of team; track member.name) {
@@ -14,6 +30,17 @@
           <div class="about__info">
             <h3 class="about__name">{{ member.name }}</h3>
             <p class="about__role mono">{{ member.role }}</p>
+            <p class="about__detail">{{ member.specialty }}</p>
+            <p class="about__detail">{{ member.education }}</p>
+            <a
+              class="about__linkedin"
+              [href]="member.linkedin"
+              target="_blank"
+              rel="noopener noreferrer"
+              [attr.aria-label]="'LinkedIn de ' + member.name + ' (se abre en una pestaña nueva)'"
+            >
+              LinkedIn
+            </a>
           </div>
         </li>
       }

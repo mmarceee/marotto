@@ -17,24 +17,27 @@ export function createApp({ sendMail, sender, trustProxy }) {
     async (req, res) => {
       const nombre = typeof req.body?.nombre === 'string' ? req.body.nombre.trim() : '';
       const email = typeof req.body?.email === 'string' ? req.body.email.trim() : '';
+      const telefono = typeof req.body?.telefono === 'string' ? req.body.telefono.trim() : '';
       const mensaje = typeof req.body?.mensaje === 'string' ? req.body.mensaje.trim() : '';
 
       if (
         nombre.length < 2 || nombre.length > 100 ||
         email.length > 254 || !EMAIL_PATTERN.test(email) ||
+        telefono.length > 40 || /[\r\n\u2028\u2029]/.test(telefono) ||
         mensaje.length < 10 || mensaje.length > 5000
       ) {
         return res.sendStatus(400);
       }
       if (!sendMail) return res.sendStatus(503);
 
+      const phoneLine = telefono ? `\nTeléfono: ${telefono}` : '';
       try {
         await sendMail({
           from: { name: 'Formulario de Marotto', address: sender },
           to: 'marotto.software@gmail.com',
           replyTo: { address: email },
           subject: 'Nuevo mensaje desde el sitio de Marotto',
-          text: `Nombre: ${nombre}\nCorreo: ${email}\n\nMensaje:\n${mensaje}`,
+          text: `Nombre: ${nombre}\nCorreo: ${email}${phoneLine}\n\nMensaje:\n${mensaje}`,
         });
         return res.sendStatus(204);
       } catch (error) {
