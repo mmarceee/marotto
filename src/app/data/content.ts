@@ -142,7 +142,7 @@ export const TEAM: TeamMember[] = [
 
 export const CONTACT = {
   whatsapp: [
-    { display: '+598 99 654 896', href: 'https://wa.me/59899654896' },
+    { display: '+598 99 654 895', href: 'https://wa.me/59899654895' },
     { display: '+598 91 076 119', href: 'https://wa.me/59891076119' },
   ],
   email: { display: 'marotto.software@gmail.com', href: 'mailto:marotto.software@gmail.com' },
