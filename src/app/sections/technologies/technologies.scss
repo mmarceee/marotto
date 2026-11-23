@@ -12,10 +12,31 @@
   gap: 28px;
 }
 
+// Una fila por categoría: etiqueta arriba en teléfono, a la izquierda desde tablet
+.tech__group {
+  display: grid;
+  gap: 14px;
+  padding-block: 24px;
+  border-top: 1px solid var(--color-border);
+
+  @include bp.up(bp.$md) {
+    grid-template-columns: 160px minmax(0, 1fr);
+    align-items: center;
+    gap: 24px;
+  }
+}
+
+.tech__category {
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: var(--color-accent-soft);
+}
+
+// 4 columnas fijas desde tablet para que las tarjetas midan lo mismo en todas las filas
 .tech__grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
+  grid-template-columns: repeat(var(--mobile-cols, 2), minmax(0, 1fr));
+  gap: 10px;
 
   @include bp.up(bp.$md) {
     grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -27,21 +48,37 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
-  padding: 22px 12px;
+  gap: 10px;
+  padding: 18px 6px;
   background-color: var(--color-surface-raised);
   text-align: center;
+
+  @include bp.up(bp.$md) {
+    gap: 12px;
+    padding: 22px 12px;
+  }
 }
 
 .tech__logo {
   display: block;
+  width: 40px;
+  height: 40px;
   object-fit: contain;
+
+  @include bp.up(bp.$md) {
+    width: 50px;
+    height: 50px;
+  }
 }
 
 .tech__name {
-  font-size: 1rem;
+  font-size: 0.8125rem;
   line-height: 1.3;
   font-weight: 500;
+
+  @include bp.up(bp.$md) {
+    font-size: 1rem;
+  }
 }
 
 .tech__note {

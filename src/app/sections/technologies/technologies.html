@@ -3,11 +3,20 @@
     <app-section-heading tag="tecnologias" title="Con qué trabajamos" headingId="titulo-tecnologias" />
 
     <div class="tech__body">
-      <ul class="tech__grid">
-        @for (tech of technologies; track tech.name) {
-          <li class="tech__item card" appReveal>
-            <img class="tech__logo" [src]="tech.logo" alt="" width="50" height="50" loading="lazy" />
-            <span class="tech__name">{{ tech.name }}</span>
+      <ul class="tech__groups">
+        @for (group of groups; track group.category) {
+          <li class="tech__group" appReveal>
+            <h3 class="tech__category mono">
+              <span class="tech__slashes" aria-hidden="true">// </span>{{ group.category }}
+            </h3>
+            <ul class="tech__grid" [style.--mobile-cols]="mobileColumns(group.items.length)">
+              @for (tech of group.items; track tech.name) {
+                <li class="tech__item card">
+                  <img class="tech__logo" [src]="tech.logo" alt="" width="50" height="50" loading="lazy" />
+                  <span class="tech__name">{{ tech.name }}</span>
+                </li>
+              }
+            </ul>
           </li>
         }
       </ul>

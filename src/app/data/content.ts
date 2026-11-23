@@ -56,15 +56,36 @@ export interface Technology {
   logo: string;
 }
 
-export const TECHNOLOGIES: Technology[] = [
-  { name: '.NET', logo: 'tecnologias/dotnet.svg' },
-  { name: 'Java', logo: 'tecnologias/java.svg' },
-  { name: 'PHP', logo: 'tecnologias/php.svg' },
-  { name: 'Laravel', logo: 'tecnologias/laravel.svg' },
-  { name: 'Angular', logo: 'tecnologias/angular.svg' },
-  { name: 'SQL Server', logo: 'tecnologias/sql-server.svg' },
-  { name: 'PostgreSQL', logo: 'tecnologias/postgresql.svg' },
-  { name: 'MySQL', logo: 'tecnologias/mysql.svg' },
+export interface TechnologyGroup {
+  category: string;
+  items: Technology[];
+}
+
+export const TECHNOLOGY_GROUPS: TechnologyGroup[] = [
+  {
+    category: 'backend',
+    items: [
+      { name: '.NET', logo: 'tecnologias/dotnet.svg' },
+      { name: 'Java', logo: 'tecnologias/java.svg' },
+      { name: 'PHP', logo: 'tecnologias/php.svg' },
+      { name: 'Laravel', logo: 'tecnologias/laravel.svg' },
+    ],
+  },
+  {
+    category: 'frontend',
+    items: [
+      { name: 'Angular', logo: 'tecnologias/angular.svg' },
+      { name: 'Vue', logo: 'tecnologias/vue.svg' },
+    ],
+  },
+  {
+    category: 'base de datos',
+    items: [
+      { name: 'SQL Server', logo: 'tecnologias/sql-server.svg' },
+      { name: 'PostgreSQL', logo: 'tecnologias/postgresql.svg' },
+      { name: 'MySQL', logo: 'tecnologias/mysql.svg' },
+    ],
+  },
 ];
 
 export interface ProcessStep {
