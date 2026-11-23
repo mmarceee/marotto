@@ -18,7 +18,9 @@ npm test           # tests unitarios con Vitest
 2. Ejecutá `npm run start:server` en una terminal y `npm start` en otra. Abrí http://localhost:4200.
 3. El servidor envía los mensajes a `marotto.software@gmail.com`. Al responder al correo, se usa la dirección que dejó la persona.
 
-Para producción, ejecutá `npm run build` y usá `npm run start:server` como comando de inicio en un hosting con Node.js. Ese proceso sirve el sitio y el formulario. Cargá las credenciales como variables privadas del hosting. Configurá `HOST=0.0.0.0` si el hosting necesita que Node escuche en todas las interfaces. Si hay un proxy inverso, configurá `TRUST_PROXY` con sus IP o rangos CIDR para que el límite de envíos se aplique por visitante. Para otro proveedor SMTP, configurá también `SMTP_HOST` y `SMTP_PORT`.
+En Vercel no hace falta levantar el servidor: `api/contact.mjs` publica la misma app como función en `/api/contact`. Solo cargá `SMTP_USER` y `SMTP_PASSWORD` en Settings › Environment Variables y volvé a desplegar, porque las variables nuevas no se aplican a los deploys anteriores.
+
+Para otro hosting, ejecutá `npm run build` y usá `npm run start:server` como comando de inicio en un hosting con Node.js. Ese proceso sirve el sitio y el formulario. Cargá las credenciales como variables privadas del hosting. Configurá `HOST=0.0.0.0` si el hosting necesita que Node escuche en todas las interfaces. Si hay un proxy inverso, configurá `TRUST_PROXY` con sus IP o rangos CIDR para que el límite de envíos se aplique por visitante. Para otro proveedor SMTP, configurá también `SMTP_HOST` y `SMTP_PORT`.
 
 ## Dónde se edita cada cosa
 
